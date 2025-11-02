@@ -278,16 +278,18 @@
 
         .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
         }
 
         .benefit-card {
             background-color: var(--card-bg);
             border-radius: 10px;
-            overflow: hidden;
+            padding: 25px;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
 
         .benefit-card:hover {
@@ -295,24 +297,41 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .benefit-img {
-            height: 200px;
-            overflow: hidden;
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
         }
 
-        .benefit-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
+        .benefit-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .benefit-card:hover .benefit-img img {
-            transform: scale(1.1);
+        .benefit-content h3 span {
+            font-size: 1.5rem;
         }
 
-        .benefit-content {
-            padding: 25px;
+        .benefit-content ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .benefit-content li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 10px;
+        }
+
+        .benefit-content li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: -10px;
         }
 
         /* Instructor */
@@ -600,6 +619,10 @@
                 flex-direction: column;
                 gap: 20px;
             }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 576px) {
@@ -617,6 +640,10 @@
             
             .pricing-card {
                 padding: 30px 20px;
+            }
+
+            .benefit-card {
+                padding: 20px;
             }
         }
     </style>
@@ -666,33 +693,133 @@
         <div class="container">
             <h2 class="section-title">Beneficios del Curso</h2>
             <div class="benefits-grid">
+                <!-- Beneficio 1 -->
                 <div class="benefit-card fade-in">
-                    <div class="benefit-img">
-                        <img src="https://picsum.photos/400/300?random=2" alt="Comunicación efectiva">
-                    </div>
                     <div class="benefit-content">
-                        <h3>Comunicación Efectiva</h3>
-                        <p>Aprende a expresar tus ideas con claridad, escuchar activamente y adaptar tu mensaje a diferentes audiencias para lograr una comunicación más efectiva.</p>
+                        <h3><span>💬</span> Comunicación Efectiva</h3>
+                        <p>Desarrolla habilidades para transmitir tus ideas con claridad y persuasión en cualquier contexto profesional.</p>
+                        <ul>
+                            <li>Saber expresar ideas con claridad y persuasión</li>
+                            <li>Escuchar activamente y adaptar el mensaje al público</li>
+                            <li>Dominar comunicación verbal, escrita y no verbal</li>
+                        </ul>
                     </div>
                 </div>
                 
+                <!-- Beneficio 2 -->
                 <div class="benefit-card fade-in">
-                    <div class="benefit-img">
-                        <img src="https://picsum.photos/400/300?random=3" alt="Trabajo en equipo">
-                    </div>
                     <div class="benefit-content">
-                        <h3>Trabajo en Equipo</h3>
-                        <p>Desarrolla habilidades para colaborar eficientemente, resolver conflictos y contribuir positivamente a los objetivos del equipo.</p>
+                        <h3><span>🧠</span> Pensamiento Crítico</h3>
+                        <p>Aprende a analizar situaciones complejas y tomar decisiones basadas en datos y razonamiento lógico.</p>
+                        <ul>
+                            <li>Analizar situaciones complejas con objetividad</li>
+                            <li>Evaluar opciones y tomar decisiones basadas en datos</li>
+                            <li>Encontrar soluciones creativas y viables</li>
+                        </ul>
                     </div>
                 </div>
                 
+                <!-- Beneficio 3 -->
                 <div class="benefit-card fade-in">
-                    <div class="benefit-img">
-                        <img src="https://picsum.photos/400/300?random=4" alt="Liderazgo">
-                    </div>
                     <div class="benefit-content">
-                        <h3>Liderazgo e Influencia</h3>
-                        <p>Adquiere las herramientas para inspirar a otros, gestionar proyectos y ejercer un liderazgo positivo en cualquier entorno.</p>
+                        <h3><span>🎯</span> Liderazgo y Gestión</h3>
+                        <p>Desarrolla las habilidades necesarias para inspirar, guiar y motivar equipos hacia objetivos comunes.</p>
+                        <ul>
+                            <li>Inspirar, guiar y motivar a otros</li>
+                            <li>Saber delegar, dar feedback y manejar conflictos</li>
+                            <li>Crear entorno colaborativo y de confianza</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Beneficio 4 -->
+                <div class="benefit-card fade-in">
+                    <div class="benefit-content">
+                        <h3><span>🤝</span> Inteligencia Emocional</h3>
+                        <p>Gestiona tus emociones y comprende las de los demás para mejorar tus relaciones profesionales.</p>
+                        <ul>
+                            <li>Reconocer y gestionar tus emociones y las de otros</li>
+                            <li>Mantener la calma bajo presión</li>
+                            <li>Desarrollar empatía para facilitar relaciones</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Beneficio 5 -->
+                <div class="benefit-card fade-in">
+                    <div class="benefit-content">
+                        <h3><span>🔄</span> Adaptabilidad</h3>
+                        <p>Desarrolla resiliencia para enfrentar cambios y crisis con mentalidad positiva y capacidad de adaptación.</p>
+                        <ul>
+                            <li>Enfrentar cambios y crisis con mentalidad positiva</li>
+                            <li>Aprender rápido y pivotar estrategias</li>
+                            <li>Adaptarse a entornos cambiantes</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Beneficio 6 -->
+                <div class="benefit-card fade-in">
+                    <div class="benefit-content">
+                        <h3><span>💡</span> Creatividad</h3>
+                        <p>Potencia tu capacidad para generar ideas innovadoras y pensar fuera de los esquemas convencionales.</p>
+                        <ul>
+                            <li>Proponer nuevas ideas o modelos de negocio</li>
+                            <li>Pensar "fuera de la caja" para diferenciarte</li>
+                            <li>Innovar en procesos y soluciones</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Beneficio 7 -->
+                <div class="benefit-card fade-in">
+                    <div class="benefit-content">
+                        <h3><span>⏱️</span> Gestión del Tiempo</h3>
+                        <p>Optimiza tu productividad mediante técnicas efectivas de planificación y organización.</p>
+                        <ul>
+                            <li>Priorizar tareas estratégicas</li>
+                            <li>Equilibrar carga de trabajo personal y del equipo</li>
+                            <li>Utilizar métodos de planificación efectivos</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Beneficio 8 -->
+                <div class="benefit-card fade-in">
+                    <div class="benefit-content">
+                        <h3><span>💬</span> Negociación</h3>
+                        <p>Domina técnicas de persuasión y negociación para alcanzar acuerdos beneficiosos.</p>
+                        <ul>
+                            <li>Defender intereses sin romper relaciones</li>
+                            <li>Encontrar puntos de acuerdo beneficiosos</li>
+                            <li>Habilidades clave para ventas y alianzas</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Beneficio 9 -->
+                <div class="benefit-card fade-in">
+                    <div class="benefit-content">
+                        <h3><span>🌍</span> Networking</h3>
+                        <p>Construye y mantiene relaciones profesionales sólidas que aporten valor mutuo.</p>
+                        <ul>
+                            <li>Construir y mantener relaciones profesionales</li>
+                            <li>Crear red de contactos que aporte valor</li>
+                            <li>Desarrollar habilidades interpersonales</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Beneficio 10 -->
+                <div class="benefit-card fade-in">
+                    <div class="benefit-content">
+                        <h3><span>📚</span> Aprendizaje Continuo</h3>
+                        <p>Cultiva una mentalidad de crecimiento y mejora constante en tus conocimientos y habilidades.</p>
+                        <ul>
+                            <li>Buscar mejorar constantemente conocimientos</li>
+                            <li>Estar abierto a feedback y nuevas perspectivas</li>
+                            <li>Adaptarse a nuevas tendencias y tecnologías</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -728,7 +855,7 @@
                 <ul class="price-features">
                     <li><i class="fas fa-check"></i> Acceso de por vida al contenido</li>
                     <li><i class="fas fa-check"></i> Certificado de finalización</li>
-                    <li><i class="fas fa-check"></i> 8 módulos con más de 50 lecciones</li>
+                    <li><i class="fas fa-check"></i> 10 módulos con más de 50 lecciones</li>
                     <li><i class="fas fa-check"></i> Ejercicios prácticos y materiales descargables</li>
                     <li><i class="fas fa-check"></i> Acceso a comunidad privada</li>
                     <li><i class="fas fa-check"></i> Soporte directo del instructor</li>
