@@ -202,12 +202,13 @@
         /* Hero Section */
         .hero {
             position: relative;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             color: white;
             text-align: center;
             overflow: hidden;
+            padding: 100px 0 60px;
         }
 
         .hero::before {
@@ -232,25 +233,124 @@
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
             animation: fadeInUp 1s ease;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
             animation: fadeInUp 1s ease 0.2s both;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .hero .btn {
             animation: fadeInUp 1s ease 0.4s both;
+            font-size: 1.1rem;
+            padding: 15px 40px;
+        }
+
+        /* Contador de urgencia - DISEÑO FLOTANTE */
+        .floating-counter {
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 25px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            min-width: 200px;
+            z-index: 10;
+            animation: fadeInLeft 1s ease 0.8s both;
+        }
+
+        .floating-counter::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff6b35, #4361ee, #ff6b35);
+            border-radius: 22px;
+            z-index: -1;
+            opacity: 0.7;
+        }
+
+        .floating-counter::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: inherit;
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .counter-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .counter-cell {
+            text-align: center;
+        }
+
+        .counter-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .counter-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        .counter-note {
+            font-size: 0.75rem;
+            text-align: center;
+            opacity: 0.9;
+            font-style: italic;
+            line-height: 1.3;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 12px;
         }
 
         /* Secciones */
@@ -295,12 +395,6 @@
         .benefit-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .benefit-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: var(--primary-color);
         }
 
         .benefit-content h3 {
@@ -552,6 +646,29 @@
             }
         }
 
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px) translateY(-50%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) translateY(-50%);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -564,6 +681,21 @@
         }
 
         /* Responsive */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.3rem;
+            }
+
+            .floating-counter {
+                left: 20px;
+                min-width: 180px;
+            }
+        }
+
         @media (max-width: 992px) {
             h1 {
                 font-size: 2.2rem;
@@ -581,6 +713,24 @@
                 flex: 0 0 auto;
                 max-width: 300px;
                 margin: 0 auto;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .floating-counter {
+                position: relative;
+                left: auto;
+                top: auto;
+                transform: none;
+                margin: 2rem auto 0;
+                max-width: 280px;
+                animation: fadeInUp 1s ease 0.8s both;
             }
         }
 
@@ -623,17 +773,69 @@
             .benefits-grid {
                 grid-template-columns: 1fr;
             }
+
+            /* Hero mejorado para móviles */
+            .hero {
+                padding: 120px 0 40px;
+                min-height: 90vh;
+            }
+
+            .hero-content {
+                padding: 0 15px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+
+            .hero .btn {
+                padding: 14px 35px;
+                font-size: 1rem;
+            }
+
+            .floating-counter {
+                margin: 1.5rem auto 0;
+                padding: 20px 15px;
+                max-width: 260px;
+            }
+
+            .counter-number {
+                font-size: 1.6rem;
+            }
+
+            .counter-title {
+                font-size: 0.85rem;
+            }
         }
 
         @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 1.8rem;
+            .hero {
+                padding: 100px 0 30px;
+                min-height: 85vh;
             }
-            
+
+            .hero h1 {
+                font-size: 1.9rem;
+                margin-bottom: 1rem;
+            }
+
             .hero p {
                 font-size: 1rem;
+                margin-bottom: 1.8rem;
             }
-            
+
+            .hero .btn {
+                padding: 12px 30px;
+                width: 100%;
+                max-width: 280px;
+            }
+
             section {
                 padding: 60px 0;
             }
@@ -644,6 +846,46 @@
 
             .benefit-card {
                 padding: 20px;
+            }
+
+            .floating-counter {
+                max-width: 240px;
+                padding: 18px 12px;
+            }
+
+            .counter-grid {
+                gap: 10px;
+            }
+
+            .counter-number {
+                font-size: 1.4rem;
+            }
+
+            .counter-label {
+                font-size: 0.65rem;
+            }
+
+            .counter-note {
+                font-size: 0.7rem;
+                padding-top: 10px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .floating-counter {
+                max-width: 220px;
+            }
+
+            .counter-number {
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -681,6 +923,31 @@
     <!-- Hero Section -->
     <section class="hero" id="inicio">
         <img src="https://picsum.photos/1920/1080?random=1" alt="Personas en reunión de trabajo" class="hero-bg">
+        
+        <!-- Contador flotante -->
+        <div class="floating-counter">
+            <div class="counter-title">Oferta Termina En</div>
+            <div class="counter-grid">
+                <div class="counter-cell">
+                    <div class="counter-number" id="floating-days">05</div>
+                    <div class="counter-label">Días</div>
+                </div>
+                <div class="counter-cell">
+                    <div class="counter-number" id="floating-hours">12</div>
+                    <div class="counter-label">Horas</div>
+                </div>
+                <div class="counter-cell">
+                    <div class="counter-number" id="floating-minutes">45</div>
+                    <div class="counter-label">Minutos</div>
+                </div>
+                <div class="counter-cell">
+                    <div class="counter-number" id="floating-seconds">30</div>
+                    <div class="counter-label">Segundos</div>
+                </div>
+            </div>
+            <div class="counter-note">Precio especial por tiempo limitado</div>
+        </div>
+
         <div class="hero-content">
             <h1>Desarrolla Tus Habilidades Blandas</h1>
             <p>Domina las habilidades esenciales para destacar en la era de la IA y transforma tu carrera profesional</p>
@@ -823,7 +1090,7 @@
                     </div>
                 </div>
                 
-                <!-- Beneficio 11 - Nuevo -->
+                <!-- Beneficio 11 -->
                 <div class="benefit-card fade-in">
                     <div class="benefit-content">
                         <h3><span>⭐</span> Marca Personal</h3>
@@ -837,7 +1104,7 @@
                     </div>
                 </div>
                 
-                <!-- Beneficio 12 - Nuevo -->
+                <!-- Beneficio 12 -->
                 <div class="benefit-card fade-in">
                     <div class="benefit-content">
                         <h3><span>🤖</span> IA como Aliada Estratégica</h3>
@@ -1070,6 +1337,46 @@
         // Ejecutar al cargar y al hacer scroll
         window.addEventListener('scroll', fadeInOnScroll);
         window.addEventListener('load', fadeInOnScroll);
+
+        // Contador de urgencia FLOTANTE
+        function updateFloatingCountdown() {
+            // Fecha objetivo (5 días desde ahora)
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 5);
+            targetDate.setHours(23, 59, 59, 999);
+
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            // Cálculos para días, horas, minutos y segundos
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Mostrar los resultados en el contador flotante
+            document.getElementById("floating-days").textContent = days.toString().padStart(2, '0');
+            document.getElementById("floating-hours").textContent = hours.toString().padStart(2, '0');
+            document.getElementById("floating-minutes").textContent = minutes.toString().padStart(2, '0');
+            document.getElementById("floating-seconds").textContent = seconds.toString().padStart(2, '0');
+
+            // Efecto de pulso cuando quedan menos de 10 segundos
+            if (seconds < 10) {
+                document.getElementById("floating-seconds").style.animation = "pulse 1s infinite";
+            } else {
+                document.getElementById("floating-seconds").style.animation = "none";
+            }
+
+            // Si el contador llega a cero
+            if (distance < 0) {
+                clearInterval(floatingCountdownTimer);
+                document.querySelector(".floating-counter").innerHTML = "<div class='counter-title'>¡Oferta Expirada!</div>";
+            }
+        }
+
+        // Actualizar el contador flotante cada segundo
+        const floatingCountdownTimer = setInterval(updateFloatingCountdown, 1000);
+        updateFloatingCountdown(); // Llamada inicial
     </script>
 </body>
 </html>
